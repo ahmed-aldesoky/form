@@ -1,0 +1,56 @@
+<body *ngIf="step===1">
+    
+    <div class="container" id="container">
+        <!-- left side -->
+        <div class="form-container sign-in-container">
+            <!-- personalInfoForm -->
+
+            <form  [formGroup]="personalInfoForm" (ngSubmit)="submitData()">
+                <h1>Create Account</h1>
+
+                <input type="text" formControlName="name" [class.notvalid]="name?.invalid &&name?.touched" name="name" required placeholder="Name" />
+                <div *ngIf="name?.invalid && name?.touched" >
+                    <small class="error" *ngIf="name?.errors?.['pattern']">name is not valid.</small>
+                    <small class="error" *ngIf="name?.errors?.['required']">name is required.</small>
+                </div>
+                <input type="text" formControlName="email" [class.notvalid]="email?.invalid &&email?.touched" required name="email" placeholder="Email" />
+                <div *ngIf="email?.invalid && email?.touched" >
+                    <small class="error" *ngIf="email?.errors?.['pattern']">email is not valid.</small>
+                    <small class="error" *ngIf="email?.errors?.['required']">email is required.</small>
+                </div>
+                <input type="text" required formControlName="phone" [class.notvalid]="phone?.invalid &&phone?.touched" name="phone" placeholder="phone" />
+                <div *ngIf="phone?.invalid && phone?.touched" >
+                    <small class="error" *ngIf="phone?.errors?.['pattern']">phone is not valid.</small>
+                    <small class="error" *ngIf="phone?.errors?.['required']">phone is required.</small>
+                </div>
+                <input type="password"  formControlName="pass" [class.notvalid]="pass?.invalid &&pass?.touched" name="pass" placeholder="password" />
+               <div *ngIf="pass?.invalid && pass?.touched" >
+                    <!-- <small class="error" *ngIf="pass?.invalid &&pass?.touched">password is not valid.</small> -->
+                    <small class="error" *ngIf="pass?.errors?.['required']">password is required.</small>
+                </div>
+                <input type="password"  formControlName="confirmPass"  name="confirmPass" placeholder="confirm password" />
+
+               <div *ngIf="confirmPass?.touched && pass?.touched" >
+                <small class="error" *ngIf="personalInfoForm?.errors?.['misMatch']">password is not matched.</small>
+                    <small class="error" *ngIf="confirmPass?.errors?.['required']">confirmPassword is required.</small>
+                </div>
+                <input type="submit"  class="sub"  value="submit">
+                
+            </form>
+        </div>
+            <!-- right side -->
+        <div class="overlay-container">
+            <div class="overlay">
+                
+                <div class="overlay-panel overlay-right">
+                    <h1>Already have an account !</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut repellendus placeat facilis? Excepturi modi necessitatibus quis sapiente dolores nam dolorum officiis. Et, quidem? Quibusdam unde error aliquam itaque. Officiis, architecto.</p>
+                    <button class="ghost" id="signUp" routerLink="/Login">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+    <app-signup *ngIf="step===0"(submit)="next($event)"></app-signup>

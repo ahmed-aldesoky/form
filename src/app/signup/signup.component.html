@@ -1,0 +1,46 @@
+<body>
+    
+    <div class="container" id="container">
+        <div class="form-container sign-in-container">
+
+<!-- company form -->
+            <form [formGroup]="companyForm" novalidate (ngSubmit)="submitData()">
+                <h1>Create Account</h1>
+                <input formControlName="arName" [class.notvalid]="arName?.invalid &&arName?.touched" type="text" required name="arName"  placeholder="Arabic Company Name" />
+                <div *ngIf="arName?.invalid && arName?.touched" >
+                    <small class="error" *ngIf="arName?.errors?.['pattern']">name is not valid.</small>
+                    <small class="error" *ngIf="arName?.errors?.['required']">name is required.</small>
+                </div>
+                <input type="text" formControlName="enName" [class.notvalid]="enName?.invalid &&enName?.touched"  required name="enName"  placeholder="English Company Name" />
+                <div *ngIf="enName?.invalid && enName?.touched" >
+                    <small class="error" *ngIf="enName?.errors?.['pattern']">name is not valid.</small>
+                    <small class="error" *ngIf="enName?.errors?.['required']">name is required.</small>
+                </div>
+                <input type="text" formControlName="website" [class.notvalid]="website?.invalid &&website?.touched"  name="website" placeholder="Website" />
+                <div *ngIf="website?.invalid && website?.touched" >
+                    <small class="error" *ngIf="website?.errors?.['pattern']">website is not valid.</small>
+                    <small class="error" *ngIf="website?.errors?.['required']">website is required.</small>
+                </div>
+                <input type="text" formControlName="cumericalNum" [class.notvalid]="cumericalNum?.invalid &&cumericalNum?.touched"  required name="cumericalNum" placeholder="Commerical Number" />
+                <div *ngIf="cumericalNum?.invalid && cumericalNum?.touched" >
+                    <small class="error" *ngIf="cumericalNum?.errors?.['pattern']||cumericalNum?.errors?.['maxLength']||cumericalNum?.errors?.['minLength']">cumerical Number is not valid.</small>
+                    <small class="error" *ngIf="cumericalNum?.errors?.['required']">cumerical Number is required.</small>
+                </div>
+                <input type="submit"    class="sub"  value="submit">
+            </form>
+        </div>
+        
+        <div class="overlay-container">
+            <div class="overlay">
+                
+                <div class="overlay-panel overlay-right">
+                    <h1>Already have an account !</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut repellendus placeat facilis? Excepturi modi necessitatibus quis sapiente dolores nam dolorum officiis. Et, quidem? Quibusdam unde error aliquam itaque. Officiis, architecto.</p>
+                    <button class="ghost" id="signUp" routerLink="/Login">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    </body>
