@@ -1,3 +1,7 @@
-{
+[
+    {"name":"aaa","email":"ahmed@gmail.com" , "phone":"12345678912","pass": "111","confirmPass":"111","arName":"احمد","enName":"ahmed","website":"aaa@bg.mm","cumericalNum":"1231231231"}
+    ,{"name":"aawsa","email":"ahmed@gmail.com", "phone":"12345678972","pass": "111","confirmPass":"111","arName":"احمد","enName":"ahmed","website":"aaa@bg.mm","cumericalNum":"1231231231"}
+    ,{"name":"ahmed","email":"ahmed@gmail.com" ,"phone":"12345678972","pass": "222","confirmPass":"222","arName":"احمد","enName":"ahmed","website":"aaa@bg.mm","cumericalNum":"1231231231"}
+
     
-}
+]
