@@ -8,9 +8,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 
 const routes: Routes = [
+  {path:'',redirectTo:'/personalinfo', pathMatch:'full'},
   {path:'Login', component:LoginComponent},
   {path:'forgetpass', component:ForgetpassComponent},
-  {path:'/', component:PersonalinfoComponent},
+  {path:'personalinfo', component:PersonalinfoComponent},
   {path:'homePage', component:HomePageComponent},
 
 

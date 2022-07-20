@@ -5,7 +5,7 @@
         <div class="form-container sign-in-container">
             <!-- personalInfoForm -->
 
-            <form  [formGroup]="personalInfoForm" (ngSubmit)="submitData()">
+            <form  [formGroup]="personalInfoForm" ngNativeValidate (ngSubmit)="submitData()">
                 <h1>Create Account</h1>
 
                 <input type="text" formControlName="name" [class.notvalid]="name?.invalid &&name?.touched" name="name" required placeholder="Name" />

@@ -13,7 +13,9 @@ import{patternValidation} from'../validaor/pattern'
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private fb:FormBuilder,private toast: NgToastService, private router:Router) { }
+  constructor(private fb:FormBuilder
+    ,private toast: NgToastService,
+     private router:Router) { }
 
 companyForm= this.fb.group({
   arName:['',[Validators.required,Validators.pattern('^[\u0621-\u064A\u0660-\u0669 ]+$')]],
@@ -43,7 +45,10 @@ get cumericalNum(){
 
 @Output()submit=new EventEmitter<any>()
   submitData(){
-    this.submit.emit(this.companyForm.value)
+    if (this.companyForm.valid) {
+      this.submit.emit(this.companyForm.value)
+
+    }
     }
   }
   
