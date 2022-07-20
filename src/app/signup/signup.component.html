@@ -4,8 +4,8 @@
         <div class="form-container sign-in-container">
 
 <!-- company form -->
-<!-- trying -->
-            <form [formGroup]="companyForm" novalidate (ngSubmit)="submitData()">
+
+            <form [formGroup]="companyForm" ngNativeValidate (ngSubmit)="submitData()">
                 <h1>Create Account</h1>
                 <input formControlName="arName" [class.notvalid]="arName?.invalid &&arName?.touched" type="text" required name="arName"  placeholder="Arabic Company Name" />
                 <div *ngIf="arName?.invalid && arName?.touched" >

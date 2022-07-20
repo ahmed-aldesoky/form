@@ -1,11 +1,15 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form>
+            <form [formGroup]="loginForm" novalidate >
                 
                 <h1>Login</h1>
                 <p>welcome back ! please login to your account </p>
-                <input type="email" placeholder="Email" />
+                <input type="text" formControlName="email" [class.notvalid]="email?.invalid &&email?.touched" required name="email" placeholder="Email" />
+                <div *ngIf="email?.invalid && email?.touched" >
+                    <small class="error" *ngIf="email?.errors?.['pattern']">email is not valid.</small>
+                    <small class="error" *ngIf="email?.errors?.['required']">email is required.</small>
+                </div>
                 <input type="password" placeholder="Password" />
                 <a routerLink="/forgetpass" style="color:#FF4B2B ;">Forgot your password?</a>
                 

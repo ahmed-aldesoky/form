@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter  } from '@angular/core';
 import{Router} from '@angular/router';
 import {NgToastService} from 'ng-angular-popup';
 import {FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms'
 import { passValidation } from '../validaor/PasswordValidator';
 import { EnrollService } from '../enroll.service';
+import { UserDataService } from '../user-data.service';
 
 
 
@@ -16,7 +17,11 @@ import { EnrollService } from '../enroll.service';
 })
 export class PersonalinfoComponent implements OnInit {
 
-  constructor(private fb:FormBuilder,private toast: NgToastService, private router:Router, private enrollService:EnrollService) { }
+  constructor(private fb:FormBuilder,
+    private toast: NgToastService
+    , private router:Router
+    , private enrollService:EnrollService
+    , private userData:UserDataService ) { }
 
   personalInfoForm= this.fb.group({
     name:['',[Validators.required,Validators.pattern('^[a-zA-Z\s]+$')]],
@@ -57,6 +62,10 @@ next(data:any){
   
 
 }
+myData:any
+@Output() childEvent=new EventEmitter();
+
+
 submitData(){
 
   let myData=Object.assign(this.personalInfoForm.value, this.signupData)
@@ -66,10 +75,14 @@ submitData(){
     this.enrollService.enroll(myData).subscribe(
       response=>
       {
-        console.log("success");
-      this.toast.success({detail:"success Message", summary:"form are submitted", duration:5000});
-      this.router.navigate(['/homePage'])
-        
+        if (this.personalInfoForm.valid) {
+          console.log("success");
+          this.toast.success({detail:"success Message", summary:"form are submitted", duration:5000});
+          this.router.navigate(['/homePage',this.myData.name])
+        }
+        else{
+        this.toast.error({detail:"faild Message", summary:"form aren't submitted", duration:5000});
+        }
       },
       error=>
       {
@@ -83,3 +96,11 @@ submitData(){
 
 
 }
+
+
+
+
+
+
+
+
