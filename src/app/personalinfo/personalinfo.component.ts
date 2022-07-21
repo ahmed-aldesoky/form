@@ -78,11 +78,7 @@ submitData(){
         if (this.personalInfoForm.valid) {
           console.log("success");
           this.toast.success({detail:"success Message", summary:"form are submitted", duration:5000});
-<<<<<<< HEAD
           this.router.navigate(['/homePage'])
-=======
-          this.router.navigate(['/homePage',this.myData.name])
->>>>>>> 1871ed08d0ef818de92b18b0d33fba3373da17d0
         }
         else{
         this.toast.error({detail:"faild Message", summary:"form aren't submitted", duration:5000});
