@@ -12,11 +12,8 @@ const routes: Routes = [
   {path:'Login', component:LoginComponent},
   {path:'forgetpass', component:ForgetpassComponent},
   {path:'personalinfo', component:PersonalinfoComponent},
-<<<<<<< HEAD
   {path:'homePage', component:HomePageComponent},
-=======
-  {path:'homePage/:name', component:HomePageComponent},
->>>>>>> 1871ed08d0ef818de92b18b0d33fba3373da17d0
+
 
 
 
